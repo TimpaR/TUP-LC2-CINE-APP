@@ -1,0 +1,26 @@
+#sec_peliculas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    padding: 20px;
+    justify-self: center;
+    grid-gap: 50px;
+}
+
+#sec_peliculas h3{
+    text-align: center;
+}
+
+#sec_peliculas img {
+    border-radius: 15px;
+    margin-bottom: 10ps;
+    width: 100%;
+}
+
+header h1 {
+    text-shadow: 2px 2px 4px black;
+}
+
+#contenedorPeliculas p {
+    color: var(--color-active);
+}

@@ -1,0 +1,44 @@
+header h1 {
+    text-shadow: 2px 2px 4px black;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin-top: 20px;
+}
+
+form #botones {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+form button {
+    margin-right: 5px;
+    background-color: rgb(27, 99, 57);
+    color: white;
+    border-radius: 5px;
+    padding: 3px 6px 3px 6px;
+    border: none;
+}
+
+#mensaje {
+    height: 150px;
+}
+
+#sec_mensajeError {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#sec_mensajeError p {
+    margin-top: 190px;
+    padding: 10px 150px 10px 150px;
+    background-color: rgb(204, 64, 64);
+    font-size: small;
+    color: white;
+    border-radius: 10px;
+}

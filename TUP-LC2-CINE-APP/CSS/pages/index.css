@@ -1,0 +1,129 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+
+header h1 {
+    text-shadow: 2px 2px 4px black;
+}
+
+#sec_peliculas {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 100%;
+    grid-gap: 40px;
+}
+
+#sec_peliculas p {
+    color: var(--color-active);
+    font-size: 12px;
+}
+
+#sec_peliculas h3{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#sec_peliculas img {
+    border-radius: 15px;
+    width: 100%;
+}
+
+#contPeliculas-boton {
+    display: grid;
+    justify-content: center;
+}
+
+#contPeliculas-boton button {
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 40px;
+    background-color: #7f8c8d;
+    color: #e0e0e0;
+    border: 0;
+    box-shadow: 1px 2px 1px black;
+}
+
+body {
+    background-color: #e0e0e0;
+    color: #1d1d1d;
+}
+
+#sec-messages {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 12px;
+    align-items: center;
+}
+
+#sec-messages p {
+    margin: 0;
+}
+
+#success {
+    background-color: #28a745;
+}
+
+#warning {
+    background-color: #ffc107;
+}
+
+#error {
+    background-color: #dc3545;
+}
+
+.paginacion {
+    position: ;
+    bottom: ;
+    width: ;
+    display: ;
+    justify-content: ;
+    gap: ;
+    padding: ;
+}
+.paginacion button {
+    cursor:;
+    border:;
+    display:;
+    align-items:;
+    justify-content:;
+    text-align:;
+    height:;
+    width:;
+    background-color: #;
+    color: #;
+    border-radius:;
+    font-family:;
+    font-weight:;
+    transition: .3s ease all;
+}
+.paginacion button:hover {
+    background-color: var(--color-back-active);
+}
+    /*Estilos Generales Botones Favoritos*/
+.button {
+    background: #7f8c8d;
+    color: #;
+    display:;
+    font-size:;
+    margin:;
+    padding: 10px 0;
+    text-align: center;
+    width: 200px;
+    text-decoration: none;
+    box-shadow: 0px 3px 0px #373c3c;
+}
+.button span {
+    margin-right:10px;
+}
+.button.medium {
+    width:150px;
+}
+.button.radius {
+    border-radius:50px;    
+}
+.button:hover {
+    box-shadow:0px 0px 0px;
+}
