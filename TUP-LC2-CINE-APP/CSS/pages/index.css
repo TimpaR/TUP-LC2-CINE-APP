@@ -19,6 +19,7 @@ header h1 {
 }
 
 #sec_peliculas h3{
+    text-shadow: 2px 2px 4px black;
     text-align: center;
     font-size: 16px;
     font-weight: 600;
@@ -43,6 +44,7 @@ header h1 {
     color: #e0e0e0;
     border: 0;
     box-shadow: 1px 2px 1px black;
+    cursor: pointer;
 }
 
 body {
@@ -64,41 +66,45 @@ body {
 
 #success {
     background-color: #28a745;
+    border-radius:20px;
+    padding: 20px 275px;
+    color: #e0e0e0;
 }
 
 #warning {
     background-color: #ffc107;
+    border-radius:20px;
+    padding: 20px 190px;
+    color: #e0e0e0;
 }
 
 #error {
     background-color: #dc3545;
+    border-radius:20px;
+    padding: 20px 50px;
+    color: #e0e0e0;
 }
 
 .paginacion {
-    position: ;
-    bottom: ;
-    width: ;
-    display: ;
-    justify-content: ;
-    gap: ;
-    padding: ;
+    position:bottom ;
+    bottom: auto;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 40px;
 }
 .paginacion button {
-    cursor:;
-    border:;
-    display:;
-    align-items:;
-    justify-content:;
-    text-align:;
-    height:;
-    width:;
-    background-color: #;
-    color: #;
-    border-radius:;
-    font-family:;
-    font-weight:;
-    transition: .3s ease all;
+cursor:pointer;
+padding: 10px 50px;
+background-color: #281444;
+color: white;
+border-radius:20px;
+font-family:'sans-serif';
+font-weight: 600;
+transition: .3s ease all;
 }
+
 .paginacion button:hover {
     background-color: var(--color-back-active);
 }
