@@ -5,8 +5,7 @@ header h1 {
 form {
     display: flex;
     flex-direction: column;
-    width: 400px;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 form #botones {
@@ -15,17 +14,14 @@ form #botones {
     margin-top: 15px;
 }
 
-form button {
+form .boton {
     margin-right: 5px;
     background-color: rgb(27, 99, 57);
     color: white;
     border-radius: 5px;
     padding: 3px 6px 3px 6px;
     border: none;
-}
-
-#mensaje {
-    height: 150px;
+    cursor: pointer;
 }
 
 #sec_mensajeError {
@@ -34,11 +30,29 @@ form button {
     justify-content: center;
 }
 
-#sec_mensajeError p {
-    margin-top: 190px;
+#sec_mensajeError .error {
+    margin-top: 10px;
     padding: 10px 150px 10px 150px;
     background-color: rgb(204, 64, 64);
     font-size: small;
     color: white;
     border-radius: 10px;
+}
+
+#sec_mensajeError .succes {
+    margin-top: 10px;
+    padding: 10px 150px 10px 150px;
+    background-color: #28a745;
+    font-size: small;
+    color: white;
+    border-radius: 10px;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+main p {
+    margin-bottom: 0px;
 }

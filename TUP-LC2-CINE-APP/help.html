@@ -8,6 +8,10 @@
     <!-- Estilos CSS -->
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="CSS/pages/help.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        emailjs.init('KDSKnKXwfwBeN09aR')
+    </script>
 </head>
 
 <body>
@@ -28,22 +32,27 @@
     <!-- Contenido principal de la página -->
     <main>
         <h2>Ayuda Cine App v.1</h2>
-        <p>Esta App te permite consultar la cartelera de cine utilizando la API de <a href="https://www.themoviedb.org/documentation/api" target="_blank">The movie database API.</a> <br> <br>
-        Para poder registrar sus peliculas favoritas debera <a href="index.html">Agregar Favotiro</a> desde la cartelera y luego visualizar nuestros favoritos desde <a href="favorities.html">Mis Favoritas</a> <br> <br>
-        Si tiene alguna sugerencia o inconveniente por favor complete el siguiente formulario y envienoslo. Lo contactaremos  a la brevedad.</p>
+        <p>Esta App te permite consultar la cartelera de cine utilizando la API de <a
+                href="https://www.themoviedb.org/documentation/api" target="_blank">The movie database API.</a>
+            <br><br>
+            Para poder registrar sus peliculas favoritas debera <a href="index.html">Agregar Favotiro</a> desde la
+            cartelera y luego visualizar nuestros favoritos desde <a href="favorities.html">Mis Favoritas</a> <br><br>
+            Si tiene alguna sugerencia o inconveniente por favor complete el siguiente formulario y envienoslo. Lo
+            contactaremos a la brevedad.</p>
         <section>
-            <form action="/accion.php">
-                <label for="nombre"><b>Nombre:</b></label>
-                <input type="text" name="nombre">
-                <label for="email"><b>Email:</b></label>
-                <input type="text" name="email">
-                <label for="mensaje"><b>Mensaje:</b></label>
-                <input type="text" name="mensaje" id="mensaje">
+            <form id="form">
+                <label for="from_name"><b>Nombre:</b></label>
+                <input type="text" name="from_name" id="from_name" required>
+                <label for="email_id"><b>Email:</b></label>
+                <input type="email" name="email_id" id="email_id" required oninput="validarEmail()">
+                <label for="message"><b>Mensaje:</b></label>
+                <textarea name="message" id="message" cols="40" rows="10" required ></textarea>
                 <div id="botones">
-                    <button type="submit">Limpiar</button>
-                    <button type="submit">Enviar</button>
+                    <input type="button" value="Limpiar" class="boton" onclick="limpiar()">
+                    <input type="submit" id="button" value="Enviar" class="boton">
                 </div>
             </form>
+            
         </section>
         <section id="form-movie-new">
             <!--Seccion para agregar una palicula favorita por codigo-->
@@ -61,13 +70,13 @@
             </div>
         </section>
         <section id="sec_mensajeError">
-            <p>Ingrese un Email valido</p>
+            <!--<p class="error">Ingrese un Email valido</p>-->
         </section>
     </main>
     <footer>
         <p>Desarrollado con ♥ - LC2</p>
     </footer>
-    <script src="JS/pages/help.js"></script>
+    <script src="JS/pages/help.js" defer></script>
 </body>
 
 </html>

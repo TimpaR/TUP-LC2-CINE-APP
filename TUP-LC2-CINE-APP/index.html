@@ -34,18 +34,15 @@
             <form action="/accion.php">
                 <label for="codigo">Agregar Pelicula Favorita por Codigo:</label><br><br>
                 <input type="number" id="codigo" name="codigo">
-                <button type="submit">Agregar</button>
+                <button type="button" onclick="Agregarfavorito()">Agregar</button>
             </form>
         </section>
         <section id="sec-messages">
             <!--Seccion para mensajes-->
-            <p id="success">Pelicula agregada con exito</p>
-            <p id="error">Error: La Pelicula seleccionada no se encuentra en la API o se produjo un error al consultar</p>
-            <p id="warning">La Pelicula ingresada ya se encuentra almacenada</p>
         </section>
         <section id="sec_peliculas">
             <!--Seccion visualizacion de peliculas-->
-            <div class="contenedorPeliculas"> <img src="IMG/creed.jpg" alt="creed">
+            <!--<div class="contenedorPeliculas"> <img src="IMG/creed.jpg" alt="creed">
                 <h3>Creed III<br></h3>
                 <p><b>Codigo:</b>677179
                 <br>
@@ -88,7 +85,7 @@
                 <div id="contPeliculas-boton">
                     <button id="agregarPelicula">Agregar a Favoritos</button>
                 </div>
-            </div>
+            </div>-->
         </section>
         <section id="sec_paginador_peliculas">
             <!--Seccion de Paginacion-->
