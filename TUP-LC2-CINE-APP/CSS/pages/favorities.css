@@ -12,8 +12,9 @@
 }
 
 #sec_peliculas img {
+    text-align: center;
     border-radius: 15px;
-    margin-bottom: 10ps;
+    margin-bottom: 10px;
     width: 50%;
 }
 
@@ -64,4 +65,8 @@ header h1 {
     border-radius:20px;
     padding: 20px 190px;
     color: #e0e0e0;
+}
+
+.centrarimg {
+    text-align: center;
 }

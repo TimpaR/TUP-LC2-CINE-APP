@@ -1,30 +1,41 @@
+const getContenedorPelicula = async (pelicula) => {
+    console.log(pelicula)
+    const key = await getTrailerKey(pelicula.id)
+    return `<div class="contenedorPeliculas" > 
+    <div class="centrarimg" >
+<img src="https://image.tmdb.org/t/p/w500/${pelicula.poster_path}"></div>
+<h3> ${pelicula.title} </h3>
+<p><b>Código:</b> ${pelicula.id}<br>
+<b>Título original:</b> ${pelicula.original_title}<br>
+<b>Idioma original:</b> ${pelicula.original_language}<br>
+<b>Resumen:</b> ${pelicula.overview}</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/${key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div id="contPeliculas-boton">
+<button id="agregarPelicula" onclick="quitarfavoritos(${pelicula.id})">Quitar de Favoritos</button>
+</div>
+</div>`
+}
+
 function mostrarpeliculas() {
     var resultados = document.getElementById('sec_peliculas');
     var mensaje = document.getElementById("sec-messages")
     var body = ""
-    let favorities = localStorage.getItem("Favoritos");
-    favorities = "[" + favorities + "]"
-    if (favorities != "[null]") {
-        favorities = JSON.parse(favorities);
-        console.log(favorities)
-        for (var i = 0; i < favorities.length; i++) {
-            let trailer1 = trailer(favorities[i].id)
-            body += `<div class="contenedorPeliculas" > 
-            <img src="https://image.tmdb.org/t/p/w500/${favorities[i].poster_path}">
-            <h3> ${favorities[i].title} </h3>
-            <p><b>Código:</b> ${favorities[i].id}<br>
-            <b>Título original:</b> ${favorities[i].original_title}<br>
-            <b>Idioma original:</b> ${favorities[i].original_language}<br>
-            <b>Resumen:</b> ${favorities[i].overview}</p>
-            <div id="contPeliculas-boton">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/${trailer1}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-               <div class="botones">
-            <button id="agregarPelicula" onclick="quitarfavoritos(${i})">Quitar de Favoritos</button>
-            </div>
-            </div>`
-        }
+    let ltfavoritos = localStorage.getItem("Favoritos");
+    if (ltfavoritos) {
+        ltfavoritos = JSON.parse(ltfavoritos);
+        for (var i = 0; i < ltfavoritos.length; i++) {
+            let url = `https://api.themoviedb.org/3/movie/${ltfavoritos[i]}?api_key=efd50a2e67c9aad12da707e41cdf0736&language=es`;
+            fetch(url)
+                .then(response => response.json())
+                .then(pelicula => getContenedorPelicula(pelicula))
+                .then(pelicula2 => {
+                    body += pelicula2
+                    resultados.innerHTML = body
+                })
+                .catch(error => console.log(error))
 
-        resultados.innerHTML = body
+
+        }
     }
     else {
         body += `<p id="warning">No tiene peliculas seleccionadas en favoritos</p>`
@@ -34,60 +45,28 @@ function mostrarpeliculas() {
 }
 mostrarpeliculas()
 
-function quitarfavoritos(i) {
-    let favorities = localStorage.getItem("Favoritos");
-    favorities = "[" + favorities + "]";
-    favorities = JSON.parse(favorities);
-
-    let favoritosnuevo = JSON.stringify(favorities); // Convertir a JSON una vez fuera del bucle
-    let eliminar = JSON.stringify(favorities[i]);
-    if (favorities.length != 1) {
-        for (var j = 0; j < favorities.length; j++) {
-            if (favorities[j] == favorities[i]) {
-                if (j == 0) {
-                    eliminar += ",";
-                } else if (j == favorities.length - 1) {
-                    eliminar = "," + eliminar;
-                    console.log("Paso por aca2");
-                } else {
-                    eliminar = "," + eliminar;
-                    console.log("Paso por aca3");
-                }
-            }
-        }
-
-        let favoritoultimo = favoritosnuevo.replace(eliminar, "");
-        favoritoultimo = favoritoultimo.slice(1, -1);
-        localStorage.setItem("Favoritos", favoritoultimo);
-
-
+function quitarfavoritos(codigo) {
+    let ltfavoritos = localStorage.getItem("Favoritos");
+    ltfavoritos = JSON.parse(ltfavoritos);
+    if (ltfavoritos.length != 1) {
+        ltfavoritos = ltfavoritos.filter(v => v !== codigo);
+        localStorage.setItem("Favoritos", JSON.stringify(ltfavoritos));
     } else {
         localStorage.removeItem("Favoritos");
     }
-
     location.reload();
-
 }
 
-function trailer(id) {
+
+async function getTrailerKey(id) {
+    console.log({ id })
     let url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=efd50a2e67c9aad12da707e41cdf0736&language=en-US`;
-    fetch(url)
-        .then(response => response.json())
-        .then(data => mostrarData(data.results))
-        .catch(error => console.log(error))
-
-    const mostrarData = (data) => {
-        console.log(data)
-
-        for (var i = 0; i < data.length; i++){
-            if (data[i].name == "Official Trailer") {
-                
-                return data[i].key
-            }
-        }
-
-
-    }
-
-
+    const response = await fetch(url)
+    const resultados = await response.json()
+    const trailer = resultados.results.find((resultado) => {
+        return resultado.type === "Trailer"
+    })
+    console.log({ resultados, trailer })
+    return trailer.key
 }
+
